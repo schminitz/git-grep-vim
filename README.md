@@ -1,4 +1,4 @@
 usage
 -----
 
-:G <wordToSearch>
+    :G <wordToSearch>
