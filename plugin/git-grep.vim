@@ -1,4 +1,4 @@
-let g:gitgrepprg="git\\ grep\\ -n"
+let g:gitgrepprg="git\\ grep\\ -n\\ -i"
 
 function! GitGrep(args)
     let grepprg_bak=&grepprg
@@ -40,7 +40,7 @@ function! LGitGrepAdd(args)
     exec "redraw!"
 endfunction
 
-command! -nargs=* -complete=file GitGrep call GitGrep(<q-args>)
+command! -nargs=* -complete=file G call GitGrep(<q-args>)
 command! -nargs=* -complete=file GitGrepAdd call GitGrepAdd(<q-args>)
 command! -nargs=* -complete=file LGitGrep call LGitGrep(<q-args>)
 command! -nargs=* -complete=file LGitGrepAdd call LGitGrepAdd(<q-args>)

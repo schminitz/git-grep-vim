@@ -1,0 +1,4 @@
+usage
+-----
+
+:G <wordToSearch>
