@@ -45,4 +45,6 @@ command! -nargs=* -complete=file GitGrepAdd call GitGrepAdd(<q-args>)
 command! -nargs=* -complete=file LGitGrep call LGitGrep(<q-args>)
 command! -nargs=* -complete=file LGitGrepAdd call LGitGrepAdd(<q-args>)
 
+nnoremap gr :G "\<<cword>\>"<CR>
+
 autocmd bufenter * if (winnr("$") == 1 && exists("b:GitGrepWindow")) | q | endif
