@@ -10,6 +10,16 @@ function! GitGrep(args)
     exec "redraw!"
 endfunction
 
+function! WordGitGrep(args)
+    let grepprg_bak=&grepprg
+    exec "set grepprg=" . g:gitgrepprg
+    execute "silent! grep " . a:args
+    botright copen
+    let &grepprg=grepprg_bak
+    let b:GitGrepWindow = 1
+    exec "redraw!"
+endfunction
+
 function! VisualGitGrep()
     normal gv"xy
     let grepprg_bak=&grepprg
@@ -22,8 +32,9 @@ function! VisualGitGrep()
 endfunction
 
 command! -nargs=* -complete=file G call GitGrep(<q-args>)
+command! -nargs=* -complete=file WordGitGrep call WordGitGrep(<q-args>)
 
-nnoremap gr :G "\<<cword>\>"<CR>
+nnoremap gr :WordGitGrep "\<<cword>\>"<CR>
 vnoremap gr :call VisualGitGrep()<CR>
 
 autocmd bufenter * if (winnr("$") == 1 && exists("b:GitGrepWindow")) | q | endif
